@@ -27,4 +27,10 @@ export const styles = StyleSheet.create({
   eyeIcon: {
     padding: width * 0.012,
   },
+  picker: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    color: "#333",
+  },
 });

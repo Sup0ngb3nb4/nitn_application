@@ -1,4 +1,4 @@
-export const BASE_URL = "http://10.14.73.58:8000";
+export const BASE_URL = "http://192.168.111.103:8000";
 
 /* Refresh Token */
 export const REFRESH_TOKEN = "api/user/refresh/"

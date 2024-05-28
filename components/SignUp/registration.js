@@ -14,12 +14,22 @@ import api from "../tokens/api";
 export default function Registration({ navigation }) {
   const [activeTab, setActiveTab] = useState("student");
   const [studentData, setStudentData] = useState({
-    studentName: "",
-    regNo: "",
-    studentMobileNo: "",
-    studentEmail: "",
-    studentPassword: "",
-    studentConfirmPassword: "",
+    username: "",
+    registrationNo: "",
+    mobileNo: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    dateOfBirth: "",
+    gender:"Select gender",
+    bloodType: "",
+    medicalConditions: "",
+    ethnicity: "",
+    address: "",
+    guardianMobileNumber: "",
+    deptName: "Select Department",
+    batch: "",
+    hostelName: ""
   });
 
   const [staffData, setStaffData] = useState({

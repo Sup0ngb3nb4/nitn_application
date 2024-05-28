@@ -52,3 +52,5 @@ export const getEndPoint = (endpoint) => {
       return STUDENT_ACCOUNT_DETAILS_ENDPOINT;
   }
 };
+
+export default getEndPoint;

@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 
 const handleSaveChanges = () => {
   Alert.alert(
-    "Confirm Changes?",
+    "Confirm",
     "Are you sure you want to save these changes?",
     [
       {
