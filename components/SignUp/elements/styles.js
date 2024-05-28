@@ -27,10 +27,17 @@ export const styles = StyleSheet.create({
   eyeIcon: {
     padding: width * 0.012,
   },
-  picker: {
+  dropdownButton: {
     flex: 1,
     borderWidth: 1,
     borderColor: "#ccc",
+    borderRadius: width * 0.03,
+    paddingHorizontal: width * 0.03,
+    paddingVertical: height * 0.012,
+    justifyContent: "center",
+  },
+  dropdownButtonText: {
+    textAlign: "left",
     color: "#333",
   },
 });

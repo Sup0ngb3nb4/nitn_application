@@ -18,13 +18,34 @@ import {
 } from "@expo/vector-icons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { styles } from "./styles";
-import { Picker } from "@react-native-picker/picker";
+import { Dropdown } from "react-native-element-dropdown";
 
 const Student = ({ formData, handleInputChange }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConPassVisible, setIsConPassVisible] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, setDate] = useState(new Date());
+
+  const data = [
+    { gender: "Male", value: "male" },
+    { gender: "Female", value: "female" },
+  ];
+  const department = [
+    { deptName: "B.Tech, CE" },
+    { deptName: "B.Tech, CSE" },
+    { deptName: "B.Tech, ECE" },
+    { deptName: "B.Tech, EEE" },
+    { deptName: "B.Tech, EIE" },
+    { deptName: "B.Tech, ME" },
+    { deptName: "M.Tech, CSE" },
+    { deptName: "M.Tech, EEE" },
+    { deptName: "M.Sc, SH" },
+  ];
+
+  const [gender, setGender] = useState("Gender");
+  const [dept, setDept] = useState("Department");
+  const [genderFocus, setGenderFocus] = useState(true);
+  const [deptFocus, setDeptFocus] = useState(true);
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -35,6 +56,7 @@ const Student = ({ formData, handleInputChange }) => {
     const formattedDate = currentDate.toISOString().split("T")[0];
     handleInputChange("student", "dateOfBirth", formattedDate);
   };
+  console.log(formData);
 
   return (
     <>
@@ -211,23 +233,23 @@ const Student = ({ formData, handleInputChange }) => {
           color="#999"
           style={styles.inputIcon}
         />
-        {/* <TextInput
+        <Dropdown
           style={styles.input}
-          placeholder="Gender"
-          placeholderTextColor="#999"
+          data={data}
+          placeholderStyle={genderFocus && { color: "#999" }}
+          maxHeight={300}
+          labelField="gender"
+          valueField="value"
+          placeholder={gender}
           value={formData.gender}
-          onChangeText={(text) => handleInputChange("student", "gender", text)}
-        /> */}
-        <Picker
-          selectedValue={formData.gender}
-          style={styles.picker}
-          onValueChange={(itemValue) =>
-            handleInputChange("student", "gender", itemValue)
-          }
-        >
-          <Picker.Item label="Male" value="Male" />
-          <Picker.Item label="Female" value="Female" />
-        </Picker>
+          autoScroll={false}
+          onFocus={() => setGenderFocus(true)}
+          onBlur={() => setGenderFocus(false)}
+          onChange={(item) => {
+            handleInputChange("student", "gender", item.value);
+            setGender(item.gender);
+          }}
+        />
       </View>
 
       {/* Blood Type */}
@@ -332,29 +354,23 @@ const Student = ({ formData, handleInputChange }) => {
           color="#999"
           style={styles.inputIcon}
         />
-        {/* <TextInput
+        <Dropdown
           style={styles.input}
-          placeholder="Department Name"
-          placeholderTextColor="#999"
+          data={department}
+          placeholderStyle={deptFocus && { color: "#999" }}
+          maxHeight={300}
+          labelField="deptName"
+          valueField="deptName"
+          placeholder={dept}
           value={formData.deptName}
-          onChangeText={(text) =>
-            handleInputChange("student", "deptName", text)
-          }
-        /> */}
-        <Picker
-          selectedValue={formData.deptName}
-          style={styles.picker}
-          onValueChange={(itemValue) =>
-            handleInputChange("student", "deptName", itemValue)
-          }
-        >
-          <Picker.Item label="CE" value="CE" />
-          <Picker.Item label="CSE" value="CSE" />
-          <Picker.Item label="ECE" value="ECE" />
-          <Picker.Item label="EEE" value="EEE" />
-          <Picker.Item label="EIE" value="EIE" />
-          <Picker.Item label="ME" value="ME" />
-        </Picker>
+          autoScroll={false}
+          onFocus={() => setDeptFocus(true)}
+          onBlur={() => setDeptFocus(false)}
+          onChange={(item) => {
+            handleInputChange("student", "deptName", item.value);
+            setDept(item.deptName);
+          }}
+        />
       </View>
 
       {/* Batch */}
